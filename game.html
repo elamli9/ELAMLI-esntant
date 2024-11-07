@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELAMLI enstant - لعبتك المختارة</title>
+  <link rel="stylesheet" href="game.css">
+  <!-- Updated Firebase import with type="module" -->
+</head>
+<body>
+  <header>
+    <h1><a href="index.html">ELAMLI enstant</a></h1>
+    <nav>
+      <ul>
+          <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+          <li><a href="#about" data-en="About" data-ar="حول">About</a></li>
+          <li><a href="#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+      </ul>
+  </nav>
+  </header>
+  <main>
+    <section id="selected-game" class="game-section">
+      <h2 id="game-title">تحميل اللعبة...</h2>
+      <p id="game-description"></p>
+      <iframe id="game-frame" frameborder="0" allowfullscreen width="640" height="380"></iframe>
+    </section>
+    <aside class="suggested-games">
+      <h3>ألعاب مقترحة</h3>
+      <div id="suggested-games-list">
+        <!-- سيتم تحميل الألعاب المقترحة هنا -->
+      </div>
+    </aside>
+  </main>
+  <footer>
+    <span data-en="© 2024 All right recirerved to ELAMLI enstant. " data-ar="© 2024 ELAMLI enstant. جميع الحقوق محفوظة.">
+      Discover the best online games in one place!
+  </span>
+  </footer>
+  
+  <!-- Updated Firebase script with type="module" -->
+  <script type="module">
+    // Import Firebase functions
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
+    import { getDatabase, ref, get, child } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js';
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC3ENJExu01i7yODhQQO5k6-BuZ13737T4",
+      authDomain: "elamli-shop.firebaseapp.com",
+      databaseURL: "https://elamli-shop-default-rtdb.firebaseio.com",
+      projectId: "elamli-shop",
+      storageBucket: "elamli-shop.appspot.com",
+      messagingSenderId: "740777134694",
+      appId: "1:740777134694:web:6064048d820d18540afba7",
+      measurementId: "G-MNT2CS1QSD"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    // Get selected game ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedGameId = urlParams.get('gameId');
+
+    // Display selected game
+    async function loadSelectedGame() {
+      try {
+        const snapshot = await get(ref(database, `games/${selectedGameId}`));
+        const game = snapshot.val();
+        
+        if (game) {
+          document.getElementById('game-title').innerText = game.title;
+          document.getElementById('game-description').innerText = game.description;
+          document.getElementById('game-frame').src = game.iframeURL;
+        } else {
+          document.getElementById('selected-game').innerHTML = "<p>عذرًا، لا يمكن العثور على هذه اللعبة.</p>";
+        }
+      } catch (error) {
+        console.error("Error fetching game:", error);
+      }
+    }
+
+    // Load suggested games
+    async function loadSuggestedGames() {
+      try {
+        const snapshot = await get(ref(database, 'games'));
+        const games = snapshot.val();
+        const suggestedGamesList = document.getElementById('suggested-games-list');
+        
+        for (let gameId in games) {
+          if (gameId !== selectedGameId) {
+            const game = games[gameId];
+            const gameCard = document.createElement('div');
+            gameCard.classList.add('suggested-game-card');
+            gameCard.innerHTML = `
+              <a href="game.html?gameId=${gameId}">
+                <img src="${game.thumbnailURL}" alt="${game.title} thumbnail" class="game-thumbnail">
+                <h4>${game.title}</h4>
+              </a>
+            `;
+            suggestedGamesList.appendChild(gameCard);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching suggested games:", error);
+      }
+    }
+
+    // Load everything when the page is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      loadSelectedGame();
+      loadSuggestedGames();
+    });
+  </script>
+   </script>
+   <script src="language.js"></script>
+   <script>
+       // Additional translation handling
+       function updateContent(lang) {
+           document.querySelectorAll('[data-en][data-ar]').forEach(element => {
+               element.textContent = element.getAttribute(`data-${lang}`);
+           });
+       }
+
+       // Extend switchLanguage function
+       const originalSwitchLanguage = switchLanguage;
+       switchLanguage = function(lang) {
+           originalSwitchLanguage(lang);
+           updateContent(lang);
+       };
+   </script>
+</body>
+</html>

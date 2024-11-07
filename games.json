@@ -1,0 +1,65 @@
+{
+    "games": {
+      "1": {
+        "title": "Test HTML Game 1",
+        "description": "A fun and engaging HTML game for everyone!",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+1",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      },
+      "2": {
+        "title": "Adventure Quest",
+        "description": "Embark on an exciting adventure in this quest game!",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+2",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      },
+      "3": {
+        "title": "Zombie Survival",
+        "description": "Can you survive the zombie apocalypse?",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+3",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      },
+      "4": {
+        "title": "Space Shooter",
+        "description": "Shoot your way through an alien invasion!",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+4",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      },
+      "5": {
+        "title": "Puzzle Challenge",
+        "description": "Solve puzzles to advance to the next level!",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+5",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      },
+      "6": {
+        "title": "Racing Mania",
+        "description": "Race against friends in this exciting racing game!",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+6",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      },
+      "7": {
+        "title": "Cooking Craze",
+        "description": "Become a master chef in this fun cooking game!",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+7",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      },
+      "8": {
+        "title": "Treasure Hunt",
+        "description": "Search for hidden treasures and avoid traps!",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+8",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      },
+      "9": {
+        "title": "Farm Frenzy",
+        "description": "Manage your farm and grow crops efficiently!",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+9",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      },
+      "10": {
+        "title": "Fashion Designer",
+        "description": "Create stunning outfits and become a fashion icon!",
+        "thumbnailURL": "https://via.placeholder.com/150?text=Game+10",
+        "iframeURL": "https://itch.io/embed-upload/11885320?color=333333"
+      }
+    }
+  }
+  

@@ -1,0 +1,11 @@
+{
+    "name": "elamli-games", 
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "start": "parcel index.html"
+    },
+    "dependencies": {
+      "firebase": "^9.14.0" 
+    }
+  }
